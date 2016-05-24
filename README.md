@@ -14,7 +14,7 @@ Example of using [the official docker container](https://hub.docker.com/_/postgr
 docker-compose up
 ```
 
-## testing
+## Testing
 
 Assuming that the docker host is at `127.0.0.1`
 
