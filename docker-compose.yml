@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  pgmaster:
+    image: "postgres:9.5"
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./initdb_master:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+  pgslave:
+    image: "postgres:9.5"
+    ports:
+      - "5434:5432"
+    links:
+      - pgmaster:master
+    volumes:
+      - ./initdb_slave:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
